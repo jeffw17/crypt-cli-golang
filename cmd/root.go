@@ -41,6 +41,7 @@ func addSubcommands() {
 
 func init() {
 	addSubcommands()
+	rootCmd.CompletionOptions.HiddenDefaultCmd = true
 }
 
 
