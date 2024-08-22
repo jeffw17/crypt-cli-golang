@@ -14,9 +14,15 @@ var DecryptCmd = &cobra.Command{
 	Short: "Decrypt the given file",
 	Long: ``,
 	Run: func(cmd *cobra.Command, args []string) {
-		path, _ := cmd.Flags().GetString("path")
+		isSet := cmd.Flags().Lookup("path").Changed
+
+		if !isSet {
+			cmd.Help()
+		} else {
+			path, _ := cmd.Flags().GetString("path")
 		
-		helper.DecryptFile(path)
+			helper.DecryptFile(path)
+		}	
 	},
 }
 

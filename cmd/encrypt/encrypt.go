@@ -14,9 +14,15 @@ var EncryptCmd = &cobra.Command{
 	Short: "Encrypt the given file",
 	Long: ``,
 	Run: func(cmd *cobra.Command, args []string) {
-		path, _ := cmd.Flags().GetString("path")
+		isSet := cmd.Flags().Lookup("path").Changed
+
+		if !isSet {
+			cmd.Help()
+		} else {
+			path, _ := cmd.Flags().GetString("path")
 		
-		helper.EncryptFile(path)
+			helper.EncryptFile(path)
+		}	
 	},
 }
 
