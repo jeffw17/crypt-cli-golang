@@ -20,12 +20,14 @@ var EncryptCmd = &cobra.Command{
 			cmd.Help()
 		} else {
 			path, _ := cmd.Flags().GetString("path")
+			key, _ := cmd.Flags().GetString("key")
 		
-			helper.EncryptFile(path)
+			helper.EncryptFile(path, key)
 		}	
 	},
 }
 
 func init() {
 	EncryptCmd.Flags().StringP("path", "p", "", "Path to file")
+	EncryptCmd.Flags().StringP("key", "k", "", "Secret key")
 }

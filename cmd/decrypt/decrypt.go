@@ -20,12 +20,14 @@ var DecryptCmd = &cobra.Command{
 			cmd.Help()
 		} else {
 			path, _ := cmd.Flags().GetString("path")
+			key, _ := cmd.Flags().GetString("key")
 		
-			helper.DecryptFile(path)
+			helper.DecryptFile(path, key)
 		}	
 	},
 }
 
 func init() {
 	DecryptCmd.Flags().StringP("path", "p", "", "Path to file")
+	DecryptCmd.Flags().StringP("key", "k", "", "Secret key")
 }
