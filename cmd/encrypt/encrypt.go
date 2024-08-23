@@ -11,7 +11,7 @@ import (
 // EncryptCmd represents the encrypt command
 var EncryptCmd = &cobra.Command{
 	Use:   "encrypt",
-	Short: "Encrypt the given file",
+	Short: "Encrypt a text file with a secret key",
 	Long: ``,
 	Run: func(cmd *cobra.Command, args []string) {
 		isSet := cmd.Flags().Lookup("path").Changed

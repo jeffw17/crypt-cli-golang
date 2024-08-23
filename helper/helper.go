@@ -3,8 +3,9 @@ package helper
 import (
 	"crypto/aes"
 	"crypto/cipher"
-	"log"
 	"crypto/rand"
+	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 )
@@ -29,7 +30,10 @@ func checkValidFilePath(path string) {
 
 func checkValidKey(key string) {
 	if key == "" {
-		log.Fatal("Error: Invalid secret key")
+		log.Fatal("Error: Must provide secret key")
+	}
+	if len(key) != 32 {
+		log.Fatal("Error: Invalid key size, must be size 32")
 	}
 }
 
@@ -82,6 +86,8 @@ func EncryptFile(path string, key string) {
 
 	clearFile(path)
 	writeFile(path, string(cipherText))
+
+	fmt.Println("File has been encrypted with secret key!")
 }
 
 func DecryptFile(path string, key string) {
@@ -110,5 +116,7 @@ func DecryptFile(path string, key string) {
 
 	clearFile(path)
 	writeFile(path, string(originText))
+
+	fmt.Println("File has been decrypted with secret key!")
 }
 

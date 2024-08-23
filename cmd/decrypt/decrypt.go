@@ -11,7 +11,7 @@ import (
 // DecryptCmd represents the decrypt command
 var DecryptCmd = &cobra.Command{
 	Use:   "decrypt",
-	Short: "Decrypt the given file",
+	Short: "Decrypt a file with a secret key",
 	Long: ``,
 	Run: func(cmd *cobra.Command, args []string) {
 		isSet := cmd.Flags().Lookup("path").Changed
