@@ -11,13 +11,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
-
-
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "crypt",
 	Short: "A CLI tool for encrypting and decrypting files.",
-	Long: ``,
+	Long: "A CLI tool for encrypting and decrypting files. \n \n" + 
+			"This tool utilizes secret key encryption for encrypting/decrypting text files.\n" +
+			"AES is used as the block cipher which is further enhanced by using a block cipher mode, " + 
+			"GCM, to allow encrpt/decrypting arbitrary file sizes.",
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	Run: func(cmd *cobra.Command, args []string) {

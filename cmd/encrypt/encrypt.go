@@ -11,8 +11,9 @@ import (
 // EncryptCmd represents the encrypt command
 var EncryptCmd = &cobra.Command{
 	Use:   "encrypt",
-	Short: "Encrypt a text file with a secret key",
-	Long: ``,
+	Short: "Encrypt a text file with a secret key.",
+	Long: "Encrypt a text file with a secret key. \n" + 
+	      "Must provide path to text file (absolute/relative) and a 32 byte secret key string (keep this safe as its required for decryption).",
 	Run: func(cmd *cobra.Command, args []string) {
 		isSet := cmd.Flags().Lookup("path").Changed
 
@@ -28,6 +29,6 @@ var EncryptCmd = &cobra.Command{
 }
 
 func init() {
-	EncryptCmd.Flags().StringP("path", "p", "", "Path to file")
-	EncryptCmd.Flags().StringP("key", "k", "", "Secret key")
+	EncryptCmd.Flags().StringP("path", "p", "", "path to text file")
+	EncryptCmd.Flags().StringP("key", "k", "", "secret key (size 32)")
 }
